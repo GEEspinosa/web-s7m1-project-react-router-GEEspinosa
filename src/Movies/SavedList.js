@@ -1,13 +1,20 @@
 import React from 'react';
+import {useNavigate, Link} from 'react-router-dom'
 
 export default function SavedList(props) {
+  let navigate = useNavigate()
+  function RouteHome (){
+    navigate('/')
+  }
+  console.log(props)
+  const {list} = props
   return (
     <div className="saved-list">
       <h3>Saved Movies:</h3>
-      {props.list.map(movie => (
-        <span className="saved-movie">{movie.title}</span>
+      {list.map((movie, key) => (
+        <span key={key} className="saved-movie">{movie}</span>
       ))}
-      <div className="home-button">Home</div>
+      <div onClick = {RouteHome} className="home-button">Home</div>
     </div>
   );
 }
